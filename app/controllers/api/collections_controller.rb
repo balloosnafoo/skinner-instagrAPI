@@ -11,6 +11,11 @@ class Api::CollectionsController < ApplicationController
     end
   end
 
+  def show
+    @collection = Collection.includes(:posts).find(params[:id])
+    render :show
+  end
+
   private
   def collection_params
     params.require(:collection).permit(:tag, :begin_time, :end_time)

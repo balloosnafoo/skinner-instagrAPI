@@ -22,7 +22,7 @@ class Collection < ActiveRecord::Base
     payload["data"].each do |datum|
       next unless within_range?(datum["created_time"])
       date = determine_tag_time(datum)
-      posts.create(
+      posts.create!(
         link:      datum["link"],
         image_url: datum["images"]["standard_resolution"]["url"],
         caption:   datum["caption"]["text"],
@@ -34,7 +34,7 @@ class Collection < ActiveRecord::Base
 
   private
   def self.get_or_create(params)
-    Collection.find_by(params) || Collection.create(params)
+    Collection.includes(:posts).find_by(params) || Collection.create(params)
   end
 
   def construct_url
@@ -52,7 +52,7 @@ class Collection < ActiveRecord::Base
         end
       end
     end
-    date || datum["created_at"]
+    date || datum["created_time"]
   end
 
   def within_range?(time)
