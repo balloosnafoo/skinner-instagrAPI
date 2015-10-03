@@ -5,7 +5,7 @@ window.SkinnerPixlee = {
   Routers: {},
   initialize: function() {
     var router = new SkinnerPixlee.Routers.Router({
-      $rootEl: $('content'),
+      $rootEl: $('#content'),
       instaCollections: new SkinnerPixlee.Collections.InstaCollections()
     });
 

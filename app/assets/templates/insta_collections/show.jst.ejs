@@ -1,1 +1,10 @@
 <h1>Hey there</h1>
+
+<ul>
+<% for (var i = 0; i < instaCollection.posts().length; i++) { %>
+  <% var post = instaCollection.posts().models[i] %>
+  <li>
+    <img src="<%= post.escape("image_url") %>"/>
+  </li>
+<% } %>
+</ul>
