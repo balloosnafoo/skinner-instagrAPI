@@ -22,11 +22,12 @@ class Collection < ActiveRecord::Base
     payload["data"].each do |datum|
       next unless within_range?(datum["created_time"])
       date = determine_tag_time(datum)
+      media_url = determine_media_url(datum)
       posts.create!(
         link:       datum["link"],
-        image_url:  datum["images"]["standard_resolution"]["url"],
         caption:    datum["caption"]["text"],
         username:   datum["user"]["username"],
+        media_url:  media_url,
         media_type: datum["type"],
         tag_time:   date
       )
@@ -54,6 +55,14 @@ class Collection < ActiveRecord::Base
       end
     end
     date || datum["created_time"]
+  end
+
+  def determine_media_url(datum)
+    if datum["type"] == "video"
+      datum["videos"]["standard_resolution"]["url"]
+    elsif datum["type"] == "image"
+      datum["images"]["standard_resolution"]["url"]
+    end
   end
 
   def within_range?(time)

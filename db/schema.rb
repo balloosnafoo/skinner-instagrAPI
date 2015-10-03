@@ -26,9 +26,9 @@ ActiveRecord::Schema.define(version: 20151003000839) do
 
   create_table "posts", force: :cascade do |t|
     t.string   "link",          null: false
-    t.string   "image_url",     null: false
     t.string   "caption"
     t.string   "username",      null: false
+    t.string   "media_url",     null: false
     t.string   "media_type",    null: false
     t.integer  "collection_id", null: false
     t.integer  "tag_time",      null: false
