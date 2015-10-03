@@ -23,11 +23,12 @@ class Collection < ActiveRecord::Base
       next unless within_range?(datum["created_time"])
       date = determine_tag_time(datum)
       posts.create!(
-        link:      datum["link"],
-        image_url: datum["images"]["standard_resolution"]["url"],
-        caption:   datum["caption"]["text"],
-        username:  datum["user"]["username"],
-        tag_time:  date
+        link:       datum["link"],
+        image_url:  datum["images"]["standard_resolution"]["url"],
+        caption:    datum["caption"]["text"],
+        username:   datum["user"]["username"],
+        media_type: datum["type"],
+        tag_time:   date
       )
     end
   end

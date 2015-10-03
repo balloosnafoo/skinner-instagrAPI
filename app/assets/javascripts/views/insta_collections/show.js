@@ -6,7 +6,6 @@ SkinnerPixlee.Views.InstaCollectionsShow = Backbone.View.extend({
   },
 
   render: function () {
-    debugger;
     var renderedContent = this.template({
       instaCollection: this.model
     });

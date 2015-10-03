@@ -4,7 +4,16 @@
 <% for (var i = 0; i < instaCollection.posts().length; i++) { %>
   <% var post = instaCollection.posts().models[i] %>
   <li>
+  <% if (post.escape("media_type") === "image") { %>
     <img src="<%= post.escape("image_url") %>"/>
+  <% } else { %>
+    <video controls autoplay name="media">
+      <source src="<%= post.escape("image_url") %>" type="video/mp4">
+    </video>
+    <p>
+      <%= post.escape("media_type") %>
+    </p>
+  <% } %>
   </li>
 <% } %>
 </ul>
