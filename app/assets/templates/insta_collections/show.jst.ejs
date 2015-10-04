@@ -1,16 +1,32 @@
-<h1>Hey there</h1>
+<div class="col-xs-6 col-xs-offset-3">
+  <h1>The #<%= instaCollection.escape("tag") %> Collection</h1>
 
-<ul>
-<% for (var i = 0; i < instaCollection.posts().length; i++) { %>
-  <% var post = instaCollection.posts().models[i] %>
-  <li>
-  <% if (post.escape("media_type") === "image") { %>
-    <img src="<%= post.escape("media_url") %>"/>
-  <% } else { %>
-    <video controls autoplay name="media">
-      <source src="<%= post.escape("media_url") %>" type="video/mp4">
-    </video>
+  <ul class="list-group">
+  <% for (var i = 0; i < instaCollection.posts().length; i++) { %>
+    <% var post = instaCollection.posts().models[i] %>
+    <li class="list-group-item">
+      <div class="collection-list-item">
+        <h5><%= post.escape("username") %></h5>
+        <p>
+          <%= post.escape("caption") %>
+        </p>
+      <% if (post.escape("media_type") === "image") { %>
+        <img src="<%= post.escape("media_url") %>"/>
+      <% } else { %>
+        <video controls autoplay name="media">
+          <source src="<%= post.escape("media_url") %>" type="video/mp4">
+        </video>
+      <% } %>
+      <p>
+        <a href="<%= post.escape("link") %>">
+          (view post on instagram)
+        </a>
+      </p>
+      </div>
+    </li>
   <% } %>
-  </li>
-<% } %>
-</ul>
+  </ul>
+
+  <button type="button" id="previous-page-btn">Previous</button>
+  <button type="button" id="next-page-btn">Next</button>
+</div>
