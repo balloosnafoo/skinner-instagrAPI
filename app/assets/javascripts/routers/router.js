@@ -21,7 +21,8 @@ SkinnerPixlee.Routers.Router = Backbone.Router.extend({
 
   instaCollectionsNew: function () {
     var view = new SkinnerPixlee.Views.InstaCollectionsNew({
-      model: new SkinnerPixlee.Models.InstaCollection()
+      model: new SkinnerPixlee.Models.InstaCollection(),
+      collection: this.instaCollections
     });
 
     this._swapView(view);

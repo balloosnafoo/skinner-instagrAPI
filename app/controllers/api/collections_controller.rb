@@ -18,6 +18,7 @@ class Api::CollectionsController < ApplicationController
 
   private
   def collection_params
-    params.require(:collection).permit(:tag, :begin_time, :end_time)
+    params.require(:collection)
+      .permit(:tag, :begin_time, :end_time)
   end
 end

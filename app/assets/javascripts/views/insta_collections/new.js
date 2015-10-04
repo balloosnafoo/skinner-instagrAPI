@@ -18,6 +18,21 @@ SkinnerPixlee.Views.InstaCollectionsNew = Backbone.View.extend({
 
   postInstaCollection: function (event) {
     event.preventDefault();
-    debugger;
+    var data = $(event.currentTarget).serializeJSON().collection;
+    data.begin_time = Date.parse(data.begin_time) / 1000;
+    data.end_time   = Date.parse(data.end_time) / 1000;
+    this.model.set(data);
+    this.model.save({}, {
+      success: function () {
+        this.collection.add(this.model);
+        Backbone.history.navigate(
+          "collections/" + this.model.id,
+          { trigger: true }
+        );
+      }.bind(this),
+      error: function () {
+        debugger;
+      }
+    });
   }
 });

@@ -36,7 +36,7 @@ class Collection < ActiveRecord::Base
 
   private
   def self.get_or_create(params)
-    Collection.includes(:posts).find_by(params) || Collection.create(params)
+    Collection.includes(:posts).find_by(params) || Collection.new(params)
   end
 
   def construct_url

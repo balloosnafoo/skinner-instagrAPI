@@ -16,6 +16,7 @@
 //= require backbone
 //= require bootstrap
 //= require skinner_pixlee
+//= require serialize_json
 //= require_tree ../templates
 //= require_tree ./models
 //= require_tree ./collections
