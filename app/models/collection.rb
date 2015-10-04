@@ -8,7 +8,7 @@ class Collection < ActiveRecord::Base
     next_page = result["pagination"]["next_url"]
     loop do
       create_posts_from_payload(result)
-      break unless next_page
+      break unless next_page && data_not_too_old(result["data"].last["created_time"])
       result = JSON.parse(Net::HTTP.get(URI.parse(next_page)))
       next_page = result["pagination"]["next_url"]
     end
@@ -67,5 +67,9 @@ class Collection < ActiveRecord::Base
 
   def within_range?(time)
     begin_time < time.to_i && time.to_i < end_time
+  end
+
+  def data_not_too_old(time)
+    begin_time < time.to_i
   end
 end
