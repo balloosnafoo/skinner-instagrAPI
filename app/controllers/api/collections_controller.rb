@@ -18,6 +18,11 @@ class Api::CollectionsController < ApplicationController
     render :show
   end
 
+  def index
+    @collections = Collection.all
+    render :index
+  end
+
   private
   def collection_params
     params.require(:collection)

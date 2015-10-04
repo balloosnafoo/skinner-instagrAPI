@@ -29,10 +29,8 @@ SkinnerPixlee.Views.InstaCollectionsNew = Backbone.View.extend({
           "collections/" + this.model.id,
           { trigger: true }
         );
-      }.bind(this),
-      error: function () {
-        debugger;
-      }
+      }.bind(this)
     });
+    this.$el.html(JST['shared/loading']());
   }
 });

@@ -29,7 +29,8 @@ many collections don't need to appear many times in the db. This could drastical
 reduce the amount of db space that is required by the app.
 
 I would also spend a bit of time on the styling, as the way that I made it is
-about as barebones as you can get.
+about as barebones as you can get, as I didn't get the impression that the styling
+was one of the central skills being tested here.
 
 ## Issues
 

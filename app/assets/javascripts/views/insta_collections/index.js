@@ -1,11 +1,15 @@
-SkinnerPixlee.Views.instaCollectionsIndex = Backbone.View.extend({
+SkinnerPixlee.Views.InstaCollectionsIndex = Backbone.View.extend({
   template: JST['insta_collections/index'],
 
   className: "container",
 
+  initialize: function () {
+    this.listenTo(this.collection, "sync", this.render);
+  },
+
   render: function () {
     var renderedContent = this.template({
-      instaCollection: this.collection
+      instaCollections: this.collection
     });
 
     this.$el.html(renderedContent);
