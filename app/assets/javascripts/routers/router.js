@@ -5,6 +5,7 @@ SkinnerPixlee.Routers.Router = Backbone.Router.extend({
   },
 
   routes: {
+    "collections/new": "instaCollectionsNew",
     "collections/:id": "instaCollectionsShow",
   },
 
@@ -13,6 +14,14 @@ SkinnerPixlee.Routers.Router = Backbone.Router.extend({
     var view = new SkinnerPixlee.Views.InstaCollectionsShow({
       model: instaCollection,
       collection: this.instaCollections,
+    });
+
+    this._swapView(view);
+  },
+
+  instaCollectionsNew: function () {
+    var view = new SkinnerPixlee.Views.InstaCollectionsNew({
+      model: new SkinnerPixlee.Models.InstaCollection()
     });
 
     this._swapView(view);

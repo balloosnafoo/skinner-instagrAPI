@@ -1,6 +1,8 @@
 SkinnerPixlee.Views.InstaCollectionsShow = Backbone.View.extend({
   template: JST['insta_collections/show'],
 
+  className: "container",
+
   initialize: function () {
     this.listenTo(this.model, "sync", this.render);
   },
