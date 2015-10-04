@@ -13,7 +13,7 @@ class Api::CollectionsController < ApplicationController
 
   def show
     @collection = Collection.find(params[:id])
-    @offset = params[:offset] ? params[:offset].to_i : 0
+    @offset = (params[:offset] || 0).to_i
     @posts = @collection.posts.limit(20).offset(@offset)
     render :show
   end

@@ -9,4 +9,5 @@ json.posts do
   end
 end
 
-json.offset @offset + 20
+# Offset is used for paging through the collection
+json.offset (@offset + 20) if @offset

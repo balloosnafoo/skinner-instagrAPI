@@ -24,7 +24,7 @@ SkinnerPixlee.Views.InstaCollectionsShow = Backbone.View.extend({
   nextPage: function () {
     this.model.fetch({
       data: {offset: this.model.get("offset")}
-    })
+    });
   },
 
   previousPage: function () {
