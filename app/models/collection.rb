@@ -43,7 +43,7 @@ class Collection < ActiveRecord::Base
 
   def construct_url
     url =  "https://api.instagram.com/v1/tags/#{tag}/media/recent?"
-    url += "client_id=d8733e3f2f4e428d937daa4a93f25da0"
+    url +=  "client_id=d8733e3f2f4e428d937daa4a93f25da0"
   end
 
   def determine_tag_time(datum)
