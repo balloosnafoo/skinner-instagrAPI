@@ -1,3 +1,5 @@
+require 'net/http'
+
 class Collection < ActiveRecord::Base
   validates :tag, :begin_time, :end_time, presence: true
 
